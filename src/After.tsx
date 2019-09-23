@@ -97,14 +97,35 @@ class Afterparty extends React.Component<AfterpartyProps, AfterpartyState> {
             path={r.path}
             exact={r.exact}
             location={previousLocation || location}
-            render={(props) =>
-              React.createElement(r.component, {
-                ...initialData,
-                history: props.history,
-                location: previousLocation || location,
-                match: props.match,
-                prefetch: this.prefetch
-              })
+            render={(props) => {
+              if(r.layout) {
+                return React.createElement(l.layout, {
+                  ...initialData,
+                  history: props.history,
+                  location: previousLocation || location,
+                  match: props.match,
+                  prefetch: this.prefetch,
+                  render: function (props) {
+                    return React.createElement(r.component, {
+                      ...initialData,
+                      history: props.history,
+                      location: previousLocation || location,
+                      match: props.match,
+                      prefetch: this.prefetch
+                    })
+                  }
+                })
+              } else {
+                return React.createElement(r.component, {
+                  ...initialData,
+                  history: props.history,
+                  location: previousLocation || location,
+                  match: props.match,
+                  prefetch: this.prefetch
+                })
+              }
+            }
+              
             }
           />
         ))}
