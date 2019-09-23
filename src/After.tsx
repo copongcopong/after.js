@@ -105,15 +105,13 @@ class Afterparty extends React.Component<AfterpartyProps, AfterpartyState> {
                   location: previousLocation || location,
                   match: props.match,
                   prefetch: this.prefetch,
-                  render: function (props) {
-                    return React.createElement(r.component, {
+                  content: React.createElement(r.component, {
                       ...initialData,
                       history: props.history,
                       location: previousLocation || location,
                       match: props.match,
                       prefetch: this.prefetch
                     })
-                  }
                 })
               } else {
                 return React.createElement(r.component, {
