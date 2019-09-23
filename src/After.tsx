@@ -99,7 +99,7 @@ class Afterparty extends React.Component<AfterpartyProps, AfterpartyState> {
             location={previousLocation || location}
             render={(props) => {
               if(r.layout) {
-                return React.createElement(l.layout, {
+                return React.createElement(r.layout, {
                   ...initialData,
                   history: props.history,
                   location: previousLocation || location,
